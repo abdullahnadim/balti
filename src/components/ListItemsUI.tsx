@@ -56,15 +56,18 @@ export default function ListItemsUI({
     if (!title) return
 
     const tempItem: ListItem = {
-      id: `temp-${Date.now()}`,
-      title,
-      notes: null,
-      position: (activeItems[activeItems.length - 1]?.position ?? 0) + 1024,
-      isArchived: false,
-      listId,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    }
+  id: `temp-${Date.now()}`,
+  title,
+  notes: null,
+  status: 'todo', // 👈 Add default status
+  priority: 0,    // 👈 Add default priority
+  metadata: {},   // 👈 Add default metadata
+  position: (activeItems[activeItems.length - 1]?.position ?? 0) + 1024,
+  isArchived: false,
+  listId,
+  createdAt: new Date(),
+  updatedAt: new Date(),
+}
 
     startTransition(() => {
       setItems(prev => [...prev, tempItem])
