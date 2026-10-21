@@ -59,7 +59,7 @@ export default function ListSettings({ list }: { list: List }) {
     <div className="relative" ref={dropdownRef}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/[0.05] text-zinc-500 hover:text-zinc-300 transition-colors"
+        className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/[0.05] text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300 transition-colors"
       >
         <MoreHorizontal size={20} />
       </button>
@@ -71,14 +71,14 @@ export default function ListSettings({ list }: { list: List }) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className="absolute right-0 top-full mt-2 w-48 bg-[#111] border border-white/[0.1] rounded-xl shadow-2xl overflow-hidden z-40 p-1"
+            className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-[#111] border border-black/[0.08] dark:border-white/[0.1] rounded-xl shadow-2xl overflow-hidden z-40 p-1"
           >
             <button 
               onClick={() => {
                 setIsOpen(false)
                 setIsEditModalOpen(true)
               }}
-              className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-zinc-300 hover:bg-white/[0.05] hover:text-white rounded-lg transition-colors text-left"
+              className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/[0.05] hover:text-zinc-900 dark:hover:text-white rounded-lg transition-colors text-left"
             >
               <Edit2 size={16} />
               Edit list
@@ -86,7 +86,7 @@ export default function ListSettings({ list }: { list: List }) {
             <button 
               onClick={handleDelete}
               disabled={isPending}
-              className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-rose-500 hover:bg-rose-500/10 rounded-lg transition-colors text-left disabled:opacity-50"
+              className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-rose-600 dark:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-500/10 rounded-lg transition-colors text-left disabled:opacity-50"
             >
               <Trash2 size={16} />
               {isPending ? 'Deleting...' : 'Delete list'}
@@ -103,18 +103,18 @@ export default function ListSettings({ list }: { list: List }) {
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
               exit={{ opacity: 0 }} 
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/20 dark:bg-black/60 backdrop-blur-sm"
               onClick={() => setIsEditModalOpen(false)}
             />
             <motion.div 
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-md bg-[#111] border border-white/[0.1] rounded-2xl shadow-2xl p-6"
+              className="relative w-full max-w-md bg-white dark:bg-[#111] border border-black/[0.08] dark:border-white/[0.1] rounded-2xl shadow-2xl p-6"
             >
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-medium text-white">Edit List</h3>
-                <button onClick={() => setIsEditModalOpen(false)} className="text-zinc-500 hover:text-white transition-colors">
+                <h3 className="text-lg font-medium text-zinc-900 dark:text-white">Edit List</h3>
+                <button onClick={() => setIsEditModalOpen(false)} className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
                   <X size={20} />
                 </button>
               </div>
@@ -127,14 +127,14 @@ export default function ListSettings({ list }: { list: List }) {
                     onChange={(e) => setName(e.target.value)}
                     placeholder="List name"
                     required
-                    className="w-full bg-transparent border-b border-white/[0.1] py-2 text-2xl font-medium text-white outline-none focus:border-[var(--list-accent)] transition-colors"
+                    className="w-full bg-transparent border-b border-black/[0.08] dark:border-white/[0.1] py-2 text-2xl font-medium text-zinc-900 dark:text-white outline-none focus:border-[var(--list-accent)] transition-colors"
                   />
                   <input
                     type="text"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Optional description"
-                    className="w-full bg-transparent border-b border-white/[0.1] py-2 text-zinc-400 outline-none focus:border-[var(--list-accent)] transition-colors"
+                    className="w-full bg-transparent border-b border-black/[0.08] dark:border-white/[0.1] py-2 text-zinc-600 dark:text-zinc-400 outline-none focus:border-[var(--list-accent)] transition-colors"
                   />
                 </div>
 
@@ -147,7 +147,7 @@ export default function ListSettings({ list }: { list: List }) {
                         type="button"
                         onClick={() => setIcon(i)}
                         className={`w-10 h-10 text-xl flex items-center justify-center rounded-lg transition-all ${
-                          icon === i ? 'bg-white/[0.1] shadow-inner' : 'hover:bg-white/[0.05] opacity-50 hover:opacity-100'
+                          icon === i ? 'bg-black/5 dark:bg-white/[0.1] shadow-inner' : 'hover:bg-black/5 dark:hover:bg-white/[0.05] opacity-50 hover:opacity-100'
                         }`}
                       >
                         {i}
@@ -168,7 +168,7 @@ export default function ListSettings({ list }: { list: List }) {
                         style={{ backgroundColor: c.value }}
                       >
                         {color === c.value && (
-                          <span className="absolute inset-[-4px] border-2 border-white/30 rounded-full" />
+                          <span className="absolute inset-[-4px] border-2 border-black/30 dark:border-white/30 rounded-full" />
                         )}
                       </button>
                     ))}
@@ -176,10 +176,10 @@ export default function ListSettings({ list }: { list: List }) {
                 </div>
 
                 <div className="pt-4 flex justify-end gap-3">
-                  <button type="button" onClick={() => setIsEditModalOpen(false)} className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors">
+                  <button type="button" onClick={() => setIsEditModalOpen(false)} className="px-4 py-2 text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
                     Cancel
                   </button>
-                  <button type="submit" disabled={isPending} className="px-4 py-2 text-sm font-medium bg-white text-black rounded-lg hover:bg-zinc-200 transition-colors disabled:opacity-50">
+                  <button type="submit" disabled={isPending} className="px-4 py-2 text-sm font-medium bg-zinc-900 dark:bg-white text-white dark:text-black rounded-lg hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors disabled:opacity-50">
                     {isPending ? 'Saving...' : 'Save Changes'}
                   </button>
                 </div>

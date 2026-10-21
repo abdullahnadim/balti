@@ -6,6 +6,12 @@ import PWARegistry from '@/components/PWARegistry'
 export const metadata: Metadata = {
   title: 'BALTI',
   description: 'Premium distraction-free personal task management.',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'BALTI',
+  },
 }
 
 export const viewport: Viewport = {
@@ -16,12 +22,17 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="relative antialiased bg-zinc-50 dark:bg-[#0a0a0a] text-zinc-900 dark:text-zinc-200 transition-colors duration-300 min-h-screen">
+      <body 
+        suppressHydrationWarning 
+        className="relative antialiased bg-zinc-50 dark:bg-[#0a0a0a] text-zinc-900 dark:text-zinc-200 transition-colors duration-300 min-h-screen"
+      >
         <ThemeProvider>
           {children}
           
